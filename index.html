@@ -13,6 +13,19 @@
       color: white;
     }
 
+    nav {
+      background: #111827;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #38bdf8;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
     header {
       text-align: center;
       padding: 80px 20px;
@@ -27,23 +40,6 @@
     p {
       font-size: 18px;
       opacity: 0.85;
-    }
-
-    nav {
-      background: #111827;
-      padding: 15px;
-      text-align: center;
-    }
-
-    nav a {
-      color: #38bdf8;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: white;
     }
 
     section {
@@ -68,6 +64,8 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
+      border: none;
+      cursor: pointer;
     }
 
     footer {
@@ -84,18 +82,14 @@
 
 <nav>
   <a href="#">Home</a>
-  <a href="#">Vision</a>
-  <a href="#">Goals</a>
-  <a href="#">Programs</a>
 </nav>
 
 <header>
   <h1>Boyhood Unbound</h1>
   <p>Empowering the boy child through mentorship, education, and leadership</p>
-  <a class="btn" href="#about">Get Involved</a>
 </header>
 
-<section id="about">
+<section>
   <div class="card">
     <h2>About Us</h2>
     <p>
@@ -113,45 +107,61 @@
     <h2>Mission</h2>
     <p>To mentor, educate, and build responsible young men through community engagement.</p>
   </div>
-
-  <div class="card">
-    <h2>Core Focus</h2>
-    <p>Mental health • Leadership • Education • Character building</p>
-  </div>
 </section>
 
-<section id="contact">
+<section>
   <div class="card">
-    <h2>Contact Us / Join Boyhood Unbound</h2>
+    <h2>Contact Us</h2>
 
-    <form name="contact" method="POST" data-netlify="true" action="/">
+    <form name="contact" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact">
 
       <p>
-        <label>Name</label><br>
-        <input type="text" name="name" required style="width:100%; padding:10px;">
+        <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:10px;">
       </p>
 
       <p>
-        <label>Email</label><br>
-        <input type="email" name="email" required style="width:100%; padding:10px;">
+        <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:10px;">
       </p>
 
       <p>
-        <label>Message</label><br>
-        <textarea name="message" rows="5" required style="width:100%; padding:10px;"></textarea>
+        <textarea name="message" placeholder="Your Message" rows="5" required style="width:100%; padding:10px;"></textarea>
       </p>
 
-      <button type="submit" class="btn">
-        Send Message
-      </button>
+      <button type="submit" class="btn">Send Message</button>
     </form>
+
+    <p id="successMsg" style="display:none; color:#22c55e; margin-top:15px;">
+      ✅ Message sent successfully!
+    </p>
+
   </div>
 </section>
 
 <footer>
   © 2026 Boyhood Unbound | Built with purpose 🌱
 </footer>
+
+<script>
+  const form = document.querySelector("form");
+  const successMsg = document.getElementById("successMsg");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      body: data
+    }).then(() => {
+      successMsg.style.display = "block";
+      form.reset();
+    }).catch(() => {
+      alert("Something went wrong. Try again.");
+    });
+  });
+</script>
 
 </body>
 </html>
