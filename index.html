@@ -75,6 +75,12 @@
       font-size: 14px;
       opacity: 0.7;
     }
+
+    input, textarea {
+      margin-top: 8px;
+      border: none;
+      border-radius: 6px;
+    }
   </style>
 </head>
 
@@ -82,6 +88,8 @@
 
 <nav>
   <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <header>
@@ -89,7 +97,8 @@
   <p>Empowering the boy child through mentorship, education, and leadership</p>
 </header>
 
-<section>
+<!-- ABOUT SECTION -->
+<section id="about">
   <div class="card">
     <h2>About Us</h2>
     <p>
@@ -109,7 +118,21 @@
   </div>
 </section>
 
+<!-- JOIN MOVEMENT -->
 <section>
+  <div class="card">
+    <h2>Join the Movement</h2>
+    <p>
+      Be part of a growing community committed to empowering the boy child.
+      Together, we can shape a stronger, more conscious generation.
+    </p>
+
+    <a href="#contact" class="btn">Join Now</a>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact">
   <div class="card">
     <h2>Contact Us</h2>
 
@@ -132,9 +155,8 @@
     </form>
 
     <p id="successMsg" style="display:none; color:#22c55e; margin-top:15px;">
-      ✅ Message sent successfully!
+      Message sent successfully!
     </p>
-
   </div>
 </section>
 
@@ -142,6 +164,23 @@
   © 2026 Boyhood Unbound | Built with purpose 🌱
 </footer>
 
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/254711938213" target="_blank" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+">
+  💬 Chat on WhatsApp
+</a>
+
+<!-- FORM SCRIPT -->
 <script>
   const form = document.querySelector("form");
   const successMsg = document.getElementById("successMsg");
